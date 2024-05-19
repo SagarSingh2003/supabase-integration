@@ -47,7 +47,7 @@ Deno.serve(async (req) => {
       const action = await permit.api.assignRole(JSON.stringify(assignedRole));
       
       response = {
-        msg : "employee with tenant role created successfully"
+        msg : `employee with ${defaultRole} role created successfully`
       }
 
       return new Response(JSON.stringify(response), { headers: corsHeaders  , status : 200})
