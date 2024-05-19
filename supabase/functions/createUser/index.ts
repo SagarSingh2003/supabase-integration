@@ -15,9 +15,7 @@ Deno.serve(async (req) => {
   const { id , defaultRole , tenant , permit_token} = await req.json()
 
   const permit = new Permit({
-    // your API Key
-    // Deno.env.get("PERMIT_TOKEN")
-
+    
     token: permit_token,
     pdp: "https://cloudpdp.api.permit.io",
 
