@@ -2,8 +2,8 @@ import { Permit } from "npm:permitio";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': "*",
-  'Access-Control-Allow-Headers': 'Authorization, x-client-info, apikey, Content-Type',
-  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST',
 }
 
 //getting user data from the body
@@ -12,12 +12,12 @@ const corsHeaders = {
 Deno.serve(async (req) => {
   
 
-  const { id , defaultRole , tenant , permit_token} = await req.json()
+  const { id , defaultRole , tenant } = await req.json()
 
   const permit = new Permit({
     
-    token: permit_token,
-    pdp: "https://cloudpdp.api.permit.io",
+    token: Deno.env.get("PERMIT_TOKEN") ,
+    pdp: Deno.env.get("PDP_URL"),
 
   });
 
